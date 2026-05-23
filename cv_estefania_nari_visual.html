@@ -25,7 +25,6 @@
       font-size: 14px;
     }
 
-    /* Language toggle */
     .lang-toggle {
       position: fixed;
       top: 16px;
@@ -51,12 +50,8 @@
       transition: all 0.2s;
     }
 
-    .lang-btn.active {
-      background: var(--navy);
-      color: white;
-    }
+    .lang-btn.active { background: var(--navy); color: white; }
 
-    /* CV container */
     .cv {
       max-width: 820px;
       margin: 28px auto;
@@ -73,7 +68,6 @@
       .section { margin-bottom: 22px; }
     }
 
-    /* Header */
     .header {
       background: var(--navy);
       padding: 40px 48px 36px;
@@ -103,26 +97,11 @@
       color: #cbd5e1;
     }
 
-    .header-contacts a {
-      color: #93c5fd;
-      text-decoration: none;
-    }
+    .header-contacts a { color: #93c5fd; text-decoration: none; }
+    .contact-item { display: flex; align-items: center; gap: 6px; }
 
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* Body */
-    .body {
-      padding: 36px 48px 52px;
-    }
-
-    /* Section */
-    .section {
-      margin-bottom: 32px;
-    }
+    .body { padding: 36px 48px 52px; }
+    .section { margin-bottom: 32px; }
 
     .section-title {
       font-size: 11px;
@@ -135,25 +114,14 @@
       margin-bottom: 20px;
     }
 
-    /* Profile */
-    .profile-text {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.75;
-    }
+    .profile-text { color: var(--muted); font-size: 14px; line-height: 1.75; }
 
-    /* Experience */
     .exp-item {
       margin-bottom: 24px;
       padding-bottom: 24px;
       border-bottom: 1px solid var(--border);
     }
-
-    .exp-item:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
+    .exp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
     .exp-header {
       display: flex;
@@ -163,45 +131,13 @@
       margin-bottom: 4px;
     }
 
-    .exp-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.3;
-    }
+    .exp-title { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.3; }
+    .exp-period { font-size: 12px; color: var(--muted); white-space: nowrap; margin-top: 2px; flex-shrink: 0; }
+    .exp-company-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .exp-company { font-size: 13px; color: var(--accent); font-weight: 600; }
+    .exp-location { font-size: 12px; color: var(--muted); }
 
-    .exp-period {
-      font-size: 12px;
-      color: var(--muted);
-      white-space: nowrap;
-      margin-top: 2px;
-      flex-shrink: 0;
-    }
-
-    .exp-company-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-
-    .exp-company {
-      font-size: 13px;
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .exp-location {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .exp-bullets {
-      margin-top: 6px;
-      padding-left: 0;
-      list-style: none;
-    }
-
+    .exp-bullets { margin-top: 6px; padding-left: 0; list-style: none; }
     .exp-bullets li {
       position: relative;
       padding-left: 16px;
@@ -210,7 +146,6 @@
       font-size: 13.5px;
       line-height: 1.6;
     }
-
     .exp-bullets li::before {
       content: '▸';
       position: absolute;
@@ -220,29 +155,10 @@
       top: 4px;
     }
 
-    /* Tags */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 10px;
-    }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .tag { background: var(--tag-bg); color: #334155; font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 4px; }
+    .tag.ai { background: #dbeafe; color: #1e40af; }
 
-    .tag {
-      background: var(--tag-bg);
-      color: #334155;
-      font-size: 11px;
-      font-weight: 500;
-      padding: 3px 9px;
-      border-radius: 4px;
-    }
-
-    .tag.ai {
-      background: #dbeafe;
-      color: #1e40af;
-    }
-
-    /* Projects */
     .project-item {
       margin-bottom: 14px;
       padding: 16px;
@@ -250,72 +166,21 @@
       border-radius: 8px;
       border-left: 3px solid var(--accent);
     }
+    .project-title { font-weight: 700; font-size: 13.5px; color: var(--text); margin-bottom: 4px; }
+    .project-desc { font-size: 13px; color: #4b5563; line-height: 1.65; }
 
-    .project-title {
-      font-weight: 700;
-      font-size: 13.5px;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .skill-group-title { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
 
-    .project-desc {
-      font-size: 13px;
-      color: #4b5563;
-      line-height: 1.65;
-    }
+    .edu-item { margin-bottom: 11px; }
+    .edu-institution { font-weight: 700; font-size: 13.5px; }
+    .edu-degree { font-size: 13px; color: var(--muted); }
 
-    /* Skills grid */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
+    .lang-items { display: flex; gap: 32px; }
+    .lang-item { display: flex; align-items: baseline; gap: 8px; }
+    .lang-name { font-weight: 700; font-size: 13.5px; }
+    .lang-level { font-size: 12px; color: var(--muted); }
 
-    .skill-group-title {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-
-    /* Education */
-    .edu-item {
-      margin-bottom: 11px;
-    }
-
-    .edu-institution {
-      font-weight: 700;
-      font-size: 13.5px;
-    }
-
-    .edu-degree {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    /* Languages */
-    .lang-items {
-      display: flex;
-      gap: 32px;
-    }
-
-    .lang-item {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-    }
-
-    .lang-name {
-      font-weight: 700;
-      font-size: 13.5px;
-    }
-
-    .lang-level {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    /* Language content toggle */
     .en { display: block; }
     .es { display: none; }
     body.lang-es .en { display: none; }
@@ -339,14 +204,13 @@
 
 <div class="cv">
 
-  <!-- HEADER -->
   <div class="header">
     <div class="header-name">Estefanía Nari</div>
     <div class="header-tagline">Senior BI &amp; Data Analyst &nbsp;·&nbsp; GenAI Adoption &nbsp;·&nbsp; Business Analytics</div>
     <div class="header-contacts">
       <span class="contact-item">📍 Barcelona, <span class="en">Spain</span><span class="es">España</span></span>
       <span class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="11" viewBox="0 0 24 18" style="vertical-align:middle;margin-right:4px"><path d="M0 0v18h24V0H0zm21.6 2L12 9.6 2.4 2h19.2zM2 16V4.8l10 7.6 10-7.6V16H2z" fill="#EA4335"/></svg>nariestefania5@gmail.com</span>
-      <span class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#25D366" style="vertical-align:middle;margin-right:4px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>+34 665 823399</span>
+      <span class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#25D366" style="vertical-align:middle;margin-right:2px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>+34 665 823399</span>
       <span class="contact-item">🔗 <a href="https://www.linkedin.com/in/estefinari/" target="_blank">linkedin.com/in/estefinari</a></span>
       <span class="contact-item">🪪 <span class="en">Spain NIE · EU Work Authorized</span><span class="es">NIE España · Autorización de Trabajo UE</span></span>
     </div>
@@ -354,24 +218,15 @@
 
   <div class="body">
 
-    <!-- PROFILE -->
     <div class="section">
       <div class="section-title"><span class="en">Profile</span><span class="es">Perfil</span></div>
-      <p class="profile-text en">
-        Business Management graduate specializing in Business Analytics with 10+ years of experience in data analysis, business intelligence, and project management. Specialized in turning data into strategic decisions through dashboards, KPIs, and predictive models.<br><br>
-        Currently at one of Latin America's leading companies in GenAI development and integration, driving AI adoption across teams through applied training programs, RAG system development, and workflow automation with agentic AI tools.
-      </p>
-      <p class="profile-text es">
-        Licenciada en Dirección de Negocios con especialización en Business Analytics y más de 10 años de experiencia en análisis de datos, inteligencia de negocios y gestión de proyectos. Especializada en transformar datos en decisiones estratégicas a través de dashboards, KPIs y modelos predictivos.<br><br>
-        Actualmente en una de las empresas líderes en desarrollo e integración de GenAI en Latinoamérica, impulsando la adopción de IA en equipos a través de programas de formación aplicada, desarrollo de sistemas RAG y automatización de flujos de trabajo con herramientas de IA agéntica.
-      </p>
+      <p class="profile-text en">Business Management graduate specializing in Business Analytics with 10+ years of experience in data analysis, business intelligence, and project management. Specialized in turning data into strategic decisions through dashboards, KPIs, and predictive models.<br><br>Currently at one of Latin America's leading companies in GenAI development and integration, driving AI adoption across teams through applied training programs, RAG system development, and workflow automation with agentic AI tools.</p>
+      <p class="profile-text es">Licenciada en Dirección de Negocios con especialización en Business Analytics y más de 10 años de experiencia en análisis de datos, inteligencia de negocios y gestión de proyectos. Especializada en transformar datos en decisiones estratégicas a través de dashboards, KPIs y modelos predictivos.<br><br>Actualmente en una de las empresas líderes en desarrollo e integración de GenAI en Latinoamérica, impulsando la adopción de IA en equipos a través de programas de formación aplicada, desarrollo de sistemas RAG y automatización de flujos de trabajo con herramientas de IA agéntica.</p>
     </div>
 
-    <!-- EXPERIENCE -->
     <div class="section">
       <div class="section-title"><span class="en">Work Experience</span><span class="es">Experiencia Laboral</span></div>
 
-      <!-- MercadoLibre -->
       <div class="exp-item">
         <div class="exp-header">
           <div class="exp-title">Senior BI Analyst · Process Development · Reverse Logistics</div>
@@ -404,17 +259,10 @@
         </div>
       </div>
 
-      <!-- VcP -->
       <div class="exp-item">
         <div class="exp-header">
-          <div class="exp-title">
-            <span class="en">Business &amp; Data Analyst · Operations &amp; Commercial Analytics</span>
-            <span class="es">Business &amp; Data Analyst · Gestión Operativa y Análisis Comercial</span>
-          </div>
-          <div class="exp-period">
-            <span class="en">Jan 2024 – Oct 2025</span>
-            <span class="es">Ene 2024 – Oct 2025</span>
-          </div>
+          <div class="exp-title"><span class="en">Business &amp; Data Analyst · Operations &amp; Commercial Analytics</span><span class="es">Business &amp; Data Analyst · Gestión Operativa y Análisis Comercial</span></div>
+          <div class="exp-period"><span class="en">Jan 2024 – Oct 2025</span><span class="es">Ene 2024 – Oct 2025</span></div>
         </div>
         <div class="exp-company-row">
           <span class="exp-company">VcP</span>
@@ -434,17 +282,10 @@
         </div>
       </div>
 
-      <!-- Vitus Sancor Salud -->
       <div class="exp-item">
         <div class="exp-header">
-          <div class="exp-title">
-            <span class="en">Business Development Lead</span>
-            <span class="es">Líder Desarrollo de Negocios</span>
-          </div>
-          <div class="exp-period">
-            <span class="en">Jul 2022 – Jan 2024</span>
-            <span class="es">Jul 2022 – Ene 2024</span>
-          </div>
+          <div class="exp-title"><span class="en">Business Development Lead</span><span class="es">Líder Desarrollo de Negocios</span></div>
+          <div class="exp-period"><span class="en">Jul 2022 – Jan 2024</span><span class="es">Jul 2022 – Ene 2024</span></div>
         </div>
         <div class="exp-company-row">
           <span class="exp-company">Vitus Sancor Salud</span>
@@ -466,17 +307,10 @@
         </div>
       </div>
 
-      <!-- Head of Business Analytics -->
       <div class="exp-item">
         <div class="exp-header">
-          <div class="exp-title">
-            <span class="en">Head of Business Analytics</span>
-            <span class="es">Jefa de Business Analytics</span>
-          </div>
-          <div class="exp-period">
-            <span class="en">Oct 2020 – Jul 2022</span>
-            <span class="es">Oct 2020 – Jul 2022</span>
-          </div>
+          <div class="exp-title"><span class="en">Head of Business Analytics</span><span class="es">Jefa de Business Analytics</span></div>
+          <div class="exp-period">Oct 2020 – Jul 2022</div>
         </div>
         <div class="exp-company-row">
           <span class="exp-company">Sancor Salud</span>
@@ -498,17 +332,10 @@
         </div>
       </div>
 
-      <!-- BI Analyst -->
       <div class="exp-item">
         <div class="exp-header">
-          <div class="exp-title">
-            <span class="en">BI Analyst</span>
-            <span class="es">Analista BI</span>
-          </div>
-          <div class="exp-period">
-            <span class="en">Apr 2018 – Oct 2020</span>
-            <span class="es">Abr 2018 – Oct 2020</span>
-          </div>
+          <div class="exp-title"><span class="en">BI Analyst</span><span class="es">Analista BI</span></div>
+          <div class="exp-period"><span class="en">Apr 2018 – Oct 2020</span><span class="es">Abr 2018 – Oct 2020</span></div>
         </div>
         <div class="exp-company-row">
           <span class="exp-company">Sancor Salud</span>
@@ -529,17 +356,10 @@
         </div>
       </div>
 
-      <!-- Administrative Analyst -->
       <div class="exp-item">
         <div class="exp-header">
-          <div class="exp-title">
-            <span class="en">Administrative &amp; Accounting Analyst</span>
-            <span class="es">Analista Administrativo Contable</span>
-          </div>
-          <div class="exp-period">
-            <span class="en">Aug 2016 – Apr 2018</span>
-            <span class="es">Ago 2016 – Abr 2018</span>
-          </div>
+          <div class="exp-title"><span class="en">Administrative &amp; Accounting Analyst</span><span class="es">Analista Administrativo Contable</span></div>
+          <div class="exp-period"><span class="en">Aug 2016 – Apr 2018</span><span class="es">Ago 2016 – Abr 2018</span></div>
         </div>
         <div class="exp-company-row">
           <span class="exp-company">Sancor Salud</span>
@@ -551,7 +371,6 @@
 
     </div>
 
-    <!-- FEATURED PROJECTS -->
     <div class="section">
       <div class="section-title"><span class="en">Featured Projects</span><span class="es">Proyectos Destacados</span></div>
 
@@ -578,7 +397,6 @@
 
     </div>
 
-    <!-- SKILLS & TOOLS -->
     <div class="section">
       <div class="section-title"><span class="en">Tools &amp; Skills</span><span class="es">Herramientas y Habilidades</span></div>
       <div class="skills-grid">
@@ -586,6 +404,7 @@
           <div class="skill-group-title">GenAI &amp; AI</div>
           <div class="tags">
             <span class="tag ai">Claude Code</span>
+            <span class="tag ai">VS Code</span>
             <span class="tag ai">RAG Development</span>
             <span class="tag ai">MCPs</span>
             <span class="tag ai">Prompt Engineering</span>
@@ -630,10 +449,8 @@
       </div>
     </div>
 
-    <!-- EDUCATION & COURSES -->
     <div class="section">
       <div class="section-title"><span class="en">Education &amp; Courses</span><span class="es">Educación y Cursos</span></div>
-
       <div class="edu-item">
         <div class="edu-institution">Instituto Tecnológico de Buenos Aires</div>
         <div class="edu-degree"><span class="en">Diploma in Big Data, Mathematics &amp; Statistics</span><span class="es">Diplomatura en Big Data, Matemáticas y Estadísticas</span></div>
@@ -650,7 +467,6 @@
         <div class="edu-institution">Asociación Dirigente de Empresas – ISCC</div>
         <div class="edu-degree"><span class="en">Technician in Business Management</span><span class="es">Técnico en Gestión Empresarial</span></div>
       </div>
-
       <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--border);">
         <div class="edu-item">
           <div class="edu-institution">POK – Capability Building</div>
@@ -667,7 +483,6 @@
       </div>
     </div>
 
-    <!-- LANGUAGES -->
     <div class="section">
       <div class="section-title"><span class="en">Languages</span><span class="es">Idiomas</span></div>
       <div class="lang-items">
