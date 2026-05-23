@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Melanie Lell · CV</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1e3248;
+      --accent: #b8903a;
+      --accent-light: #fdf3e3;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --tag-bg: #f8f5f0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: #f0ece6;
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .lang-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 100;
+      display: flex;
+      background: white;
+      border: 2px solid var(--navy);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    .lang-btn {
+      padding: 7px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: var(--navy);
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active { background: var(--navy); color: white; }
+
+    .cv {
+      max-width: 820px;
+      margin: 28px auto;
+      background: white;
+      box-shadow: 0 4px 28px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    @media print {
+      body { background: white; font-size: 12px; }
+      .cv { margin: 0; box-shadow: none; border-radius: 0; max-width: 100%; }
+      .lang-toggle { display: none; }
+    }
+
+    .header {
+      background: var(--navy);
+      padding: 40px 48px 36px;
+      color: white;
+    }
+
+    .header-name {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .header-tagline {
+      font-size: 13.5px;
+      color: #e8c87a;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      margin-bottom: 22px;
+    }
+
+    .header-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 13px;
+      color: #cbd5e1;
+    }
+
+    .header-contacts a { color: #e8c87a; text-decoration: none; }
+    .contact-item { display: flex; align-items: center; gap: 6px; }
+
+    .body { padding: 36px 48px 52px; }
+
+    .section { margin-bottom: 32px; }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent-light);
+      padding-bottom: 7px;
+      margin-bottom: 20px;
+    }
+
+    .profile-text { color: var(--muted); font-size: 14px; line-height: 1.75; }
+
+    .exp-item {
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .exp-title { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.3; }
+    .exp-period { font-size: 12px; color: var(--muted); white-space: nowrap; margin-top: 2px; flex-shrink: 0; }
+
+    .exp-company-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .exp-company { font-size: 13px; color: var(--accent); font-weight: 600; }
+    .exp-location { font-size: 12px; color: var(--muted); }
+
+    .exp-bullets { margin-top: 6px; padding-left: 0; list-style: none; }
+    .exp-bullets li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 5px;
+      color: #374151;
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+    .exp-bullets li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 10px;
+      top: 4px;
+    }
+
+    .highlight {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 8px 12px;
+      border-radius: 4px;
+      margin-top: 8px;
+      font-size: 13px;
+      color: #374151;
+      font-weight: 500;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .tag { background: var(--tag-bg); color: #334155; font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 4px; }
+
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .skill-group-title { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+
+    .edu-item { margin-bottom: 11px; }
+    .edu-institution { font-weight: 700; font-size: 13.5px; }
+    .edu-degree { font-size: 13px; color: var(--muted); }
+
+    .lang-grid { display: flex; flex-wrap: wrap; gap: 16px; }
+    .lang-item { display: flex; align-items: baseline; gap: 7px; }
+    .lang-name { font-weight: 700; font-size: 13px; }
+    .lang-level { font-size: 12px; color: var(--muted); }
+
+    .ref-item { margin-bottom: 10px; }
+    .ref-name { font-weight: 700; font-size: 13.5px; }
+    .ref-role { font-size: 12px; color: var(--muted); }
+
+    .en { display: block; }
+    .de { display: none; }
+    body.lang-de .en { display: none; }
+    body.lang-de .de { display: block; }
+    span.en { display: inline; }
+    span.de { display: none; }
+    body.lang-de span.en { display: none; }
+    body.lang-de span.de { display: inline; }
+    li.en { display: list-item; }
+    li.de { display: none; }
+    body.lang-de li.en { display: none; }
+    body.lang-de li.de { display: list-item; }
+  </style>
+</head>
+<body>
+
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('en')" id="btn-en">ENG</button>
+  <button class="lang-btn" onclick="setLang('de')" id="btn-de">DEU</button>
+</div>
+
+<div class="cv">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-name">Melanie Lell</div>
+    <div class="header-tagline">
+      <span class="en">Guest Experience &amp; Hospitality Management</span>
+      <span class="de">Guest Experience &amp; Hospitality Management</span>
+    </div>
+    <div class="header-contacts">
+      <span class="contact-item">📍 Zurich, <span class="en">Switzerland</span><span class="de">Schweiz</span></span>
+      <span class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#25D366" style="vertical-align:middle;margin-right:2px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>+41 795788065</span>
+      <span class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="11" viewBox="0 0 24 18" style="vertical-align:middle;margin-right:4px"><path d="M0 0v18h24V0H0zm21.6 2L12 9.6 2.4 2h19.2zM2 16V4.8l10 7.6 10-7.6V16H2z" fill="#EA4335"/></svg>mell.lell@hotmail.com</span>
+      <span class="contact-item">🔗 <a href="https://www.linkedin.com/in/melanielell/" target="_blank">linkedin.com/in/melanielell</a></span>
+      <span class="contact-item">🇪🇺 <span class="en">EU Citizen · CH/EU Work Authorized</span><span class="de">EU-Bürgerin · Arbeitserlaubnis CH/EU</span></span>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- PROFILE -->
+    <div class="section">
+      <div class="section-title"><span class="en">Profile</span><span class="de">Berufsprofil</span></div>
+      <p class="profile-text en">
+        Hospitality professional with 7+ years of international experience in guest experience management, events coordination, and front office operations across Argentina, Italy, and Spain. Proven track record of improving guest satisfaction metrics and driving measurable improvements in online reputation. Multilingual communicator fluent in four languages, with deep expertise in hotel PMS systems and cross-departmental coordination.
+      </p>
+      <p class="profile-text de">
+        Hospitality-Fachkraft mit über 7 Jahren internationaler Erfahrung im Gästeerlebnismanagement, in der Veranstaltungskoordination und im Front-Office-Betrieb in Argentinien, Italien und Spanien. Nachgewiesene Erfolge bei der Verbesserung von Gästezufriedenheitskennzahlen und messbaren Steigerungen der Online-Reputation. Mehrsprachige Kommunikatorin in vier Sprachen mit fundierter Expertise in Hotel-PMS-Systemen und abteilungsübergreifender Koordination.
+      </p>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section">
+      <div class="section-title"><span class="en">Work Experience</span><span class="de">Berufserfahrung</span></div>
+
+      <!-- Guest Experience Manager -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Guest Experience Manager</div>
+          <div class="exp-period">
+            <span class="en">Aug 2024 – Present</span>
+            <span class="de">Aug 2024 – heute</span>
+          </div>
+        </div>
+        <div class="exp-company-row">
+          <span class="exp-company">Barceló Occidental Atenea Mar Hotel</span>
+          <span class="exp-location">Barcelona, <span class="en">Spain</span><span class="de">Spanien</span></span>
+        </div>
+        <ul class="exp-bullets">
+          <li class="en">Led guest experience operations: managed complaints and service incidents with end-to-end resolution in coordination with the Front Office team</li>
+          <li class="en">Monitored daily KPIs for guest satisfaction, online reputation scores, and NPS surveys; coordinated VIP amenities and personalized guest requests</li>
+          <li class="en">Managed guest communications via email and service channels across multiple touchpoints</li>
+          <li class="de">Leitung der Gästeerlebnisabteilung: Beschwerdemanagement und Servicewiederherstellung in enger Abstimmung mit dem Front-Office-Team</li>
+          <li class="de">Tägliches Monitoring von KPIs für Gästezufriedenheit, Online-Reputation und NPS-Umfragen; Koordination von VIP-Amenities und personalisierten Gästewünschen</li>
+          <li class="de">Verwaltung der Gästekommunikation über E-Mail und Servicekanäle an mehreren Touchpoints</li>
+        </ul>
+        <div class="highlight en">⭐ Improved online reputation from 4.0 → 4.3 on Google and 8.1 → 8.5 on Booking.com through proactive service recovery and structured follow-up</div>
+        <div class="highlight de">⭐ Verbesserung der Online-Bewertungen von 4,0 auf 4,3 (Google) und von 8,1 auf 8,5 (Booking.com) durch proaktives Service-Recovery und strukturiertes Follow-up</div>
+        <div class="tags">
+          <span class="tag">Guest Recovery</span>
+          <span class="tag">KPI Monitoring</span>
+          <span class="tag">Online Reputation</span>
+          <span class="tag">Team Coordination</span>
+        </div>
+      </div>
+
+      <!-- Events Manager -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Events Manager</div>
+          <div class="exp-period">
+            <span class="en">May 2022 – Aug 2024</span>
+            <span class="de">Mai 2022 – Aug 2024</span>
+          </div>
+        </div>
+        <div class="exp-company-row">
+          <span class="exp-company">Barceló Occidental Atenea Mar Hotel</span>
+          <span class="exp-location">Barcelona, <span class="en">Spain</span><span class="de">Spanien</span></span>
+        </div>
+        <ul class="exp-bullets">
+          <li class="en">Coordinated all hotel departments to ensure seamless execution of group events and corporate guest experiences</li>
+          <li class="en">Managed full event lifecycle: guest arrival, service order review, schedule and menu confirmation, post-event billing</li>
+          <li class="en">Provided personalized on-site assistance to tour leaders and event organizers throughout the stay</li>
+          <li class="de">Abteilungsübergreifende Koordination für reibungslose Durchführung von Gruppenveranstaltungen und Firmenevents</li>
+          <li class="de">Vollständige Begleitung des Event-Ablaufs: Gruppenempfang, Serviceauftragsprüfung, Zeitplan- und Menübestätigung, Post-Event-Abrechnung</li>
+          <li class="de">Persönliche Betreuung von Gruppenreiseleitern und Veranstaltungsorganisatoren vor Ort</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Event Coordination</span>
+          <span class="tag">Group Management</span>
+          <span class="tag">Billing</span>
+        </div>
+      </div>
+
+      <!-- Hotel Francesca -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Front Desk Agent</div>
+          <div class="exp-period">
+            <span class="en">Apr 2021 – Oct 2021</span>
+            <span class="de">Apr 2021 – Okt 2021</span>
+          </div>
+        </div>
+        <div class="exp-company-row">
+          <span class="exp-company">Hotel Francesca – Gobbi Hotels</span>
+          <span class="exp-location">Gatteo a Mare, <span class="en">Italy</span><span class="de">Italien</span></span>
+        </div>
+        <ul class="exp-bullets">
+          <li class="en">Provided full front office support: guest assistance, booking management, daily administrative tasks, and interdepartmental coordination</li>
+          <li class="de">Front-Office-Support: Gästebetreuung, Buchungsverwaltung, tägliche Verwaltungsaufgaben und interne Koordination</li>
+        </ul>
+      </div>
+
+      <!-- Hotel Carsson -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Front Desk Agent</div>
+          <div class="exp-period">
+            <span class="en">Mar 2019 – Apr 2020</span>
+            <span class="de">Mär 2019 – Apr 2020</span>
+          </div>
+        </div>
+        <div class="exp-company-row">
+          <span class="exp-company">Hotel Carsson</span>
+          <span class="exp-location">Buenos Aires, <span class="en">Argentina</span><span class="de">Argentinien</span></span>
+        </div>
+        <ul class="exp-bullets">
+          <li class="en">Managed check-ins/check-outs, reservations, room allocation, billing, and payments in a high-volume international hotel environment</li>
+          <li class="de">Check-in/Check-out, Reservierungen, Zimmerzuweisung, Abrechnung und Zahlungsabwicklung in internationalem Hotelumfeld</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section">
+      <div class="section-title"><span class="en">Skills &amp; Tools</span><span class="de">Kenntnisse &amp; Tools</span></div>
+      <div class="skills-grid">
+        <div>
+          <div class="skill-group-title">Hotel PMS</div>
+          <div class="tags">
+            <span class="tag">Opera 5</span>
+            <span class="tag">Opera Cloud</span>
+            <span class="tag">Protel</span>
+            <span class="tag">SAP</span>
+            <span class="tag">Avalon</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title"><span class="en">Operations</span><span class="de">Operative Kenntnisse</span></div>
+          <div class="tags">
+            <span class="tag">Invoicing</span>
+            <span class="tag">Manager on Duty</span>
+            <span class="tag">KPI Monitoring</span>
+            <span class="tag">Guest Recovery</span>
+            <span class="tag">Online Reputation</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title"><span class="en">Soft Skills</span><span class="de">Soft Skills</span></div>
+          <div class="tags">
+            <span class="tag">Cross-cultural Communication</span>
+            <span class="tag">Conflict Resolution</span>
+            <span class="tag">Service Excellence</span>
+            <span class="tag">Team Coordination</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section">
+      <div class="section-title"><span class="en">Education</span><span class="de">Ausbildung</span></div>
+      <div class="edu-item">
+        <div class="edu-institution">OSTELEA</div>
+        <div class="edu-degree"><span class="en">Executive Master in Hotel Management · 2022</span><span class="de">Executive Master in Hotelmanagement · 2022</span></div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-institution">UADE – Universidad Argentina de la Empresa</div>
+        <div class="edu-degree"><span class="en">Bachelor in Tourism &amp; Hospitality · 2019</span><span class="de">Bachelor in Tourismus &amp; Hospitality · 2019</span></div>
+      </div>
+    </div>
+
+    <!-- LANGUAGES -->
+    <div class="section">
+      <div class="section-title"><span class="en">Languages</span><span class="de">Sprachen</span></div>
+      <div class="lang-grid">
+        <div class="lang-item">
+          <span class="lang-name"><span class="en">Spanish</span><span class="de">Spanisch</span></span>
+          <span class="lang-level"><span class="en">Native (C2)</span><span class="de">Muttersprache (C2)</span></span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name"><span class="en">English</span><span class="de">Englisch</span></span>
+          <span class="lang-level">C1 (CEFR)</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name"><span class="en">Italian</span><span class="de">Italienisch</span></span>
+          <span class="lang-level">C1 (CEFR)</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name"><span class="en">German</span><span class="de">Deutsch</span></span>
+          <span class="lang-level">B2 (CEFR)</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name"><span class="en">Portuguese</span><span class="de">Portugiesisch</span></span>
+          <span class="lang-level">A2 (CEFR)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- REFERENCES -->
+    <div class="section">
+      <div class="section-title"><span class="en">References</span><span class="de">Referenzen</span></div>
+      <div class="ref-item">
+        <div class="ref-name">Jesús Rivero</div>
+        <div class="ref-role">Front Desk Manager · Occidental Atenea Mar</div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-name">Lola Miranda Cuyas</div>
+        <div class="ref-role">Deputy Manager · Occidental Atenea Mar</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function setLang(lang) {
+    document.body.classList.toggle('lang-de', lang === 'de');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+  }
+</script>
+</body>
+</html>
