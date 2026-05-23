@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrategia Profesional Suiza & EU - Melanie Lell</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) { .chart-container { height: 400px; } }
+        @media (max-width: 640px) { .chart-container { height: 300px; } }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #faf9f6; }
+        ::-webkit-scrollbar-thumb { background: #e2dcd0; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c5bba8; }
+        .tab-active { background-color: #fcfbf7; border-left-color: #b45309; color: #78350f; font-weight: 600; }
+        .nav-item { transition: all 0.2s ease-in-out; border-left: 4px solid transparent; }
+        .nav-item:hover:not(.tab-active) { background-color: #fafaf9; border-left-color: #d6d3d1; }
+        .u-icon { font-size: 1.25rem; margin-right: 0.5rem; display: inline-block; width: 24px; text-align: center; }
+    </style>
+</head>
+<body class="bg-[#fafaf9] text-stone-800 font-sans antialiased h-screen flex flex-col md:flex-row overflow-hidden">
+
+    <nav class="w-64 bg-white border-r border-stone-200 flex-shrink-0 flex flex-col hidden md:flex h-full shadow-sm z-10">
+        <div class="p-6 border-b border-stone-100">
+            <span class="text-xs font-semibold bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full uppercase tracking-wider">CH/EU Plan</span>
+            <h1 class="text-xl font-serif font-bold text-amber-900 tracking-tight mt-2">LuxuryCareer CH</h1>
+            <p class="text-xs text-stone-500 mt-1 uppercase tracking-wider">Plan de Acción: M. Lell</p>
+        </div>
+        <div class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-1">
+                <li><button onclick="switchTab('analysis')" id="nav-analysis" class="nav-item tab-active w-full text-left px-6 py-3 text-sm flex items-center"><span class="u-icon">✨</span> Análisis de Mercado</button></li>
+                <li><button onclick="switchTab('languages')" id="nav-languages" class="nav-item w-full text-left px-6 py-3 text-stone-600 text-sm flex items-center"><span class="u-icon">💬</span> Ventaja Lingüística</button></li>
+                <li><button onclick="switchTab('cv-standard')" id="nav-cv-standard" class="nav-item w-full text-left px-6 py-3 text-stone-600 text-sm flex items-center"><span class="u-icon">📝</span> CV Suizo (CH) vs EU</button></li>
+                <li><button onclick="switchTab('channels')" id="nav-channels" class="nav-item w-full text-left px-6 py-3 text-stone-600 text-sm flex items-center"><span class="u-icon">🔑</span> Dónde Postularse</button></li>
+            </ul>
+        </div>
+        <div class="p-4 border-t border-stone-200 text-xs text-stone-400 text-center">Guest Experience & Operations</div>
+    </nav>
+
+    <div class="md:hidden w-full bg-white border-b border-stone-200 p-4 flex justify-between items-center z-20 shadow-sm">
+        <div>
+            <h1 class="text-lg font-serif font-bold text-amber-900">LuxuryCareer CH</h1>
+            <p class="text-[10px] text-stone-500 uppercase tracking-widest">Melanie Lell Strategy</p>
+        </div>
+        <select id="mobile-nav" onchange="switchTab(this.value)" class="bg-stone-100 border border-stone-300 text-stone-700 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-2">
+            <option value="analysis">Análisis de Mercado</option>
+            <option value="languages">Ventaja Lingüística</option>
+            <option value="cv-standard">CV Suizo vs EU</option>
+            <option value="channels">Dónde Postularse</option>
+        </select>
+    </div>
+
+    <main class="flex-1 overflow-y-auto h-full bg-[#fafaf9] relative">
+        <div class="max-w-5xl mx-auto p-4 md:p-8">
+
+            <section id="tab-analysis" class="space-y-6 animate-fade-in block">
+                <header class="mb-8">
+                    <span class="text-xs font-semibold bg-amber-100 text-amber-800 px-3 py-1 rounded-full uppercase tracking-wider">Estrategia de Ubicación</span>
+                    <h2 class="text-3xl font-serif font-extrabold text-stone-900 mt-3 mb-2">Hospitalidad de Alta Gama & Relación con Clientes</h2>
+                    <p class="text-stone-600 leading-relaxed text-lg">Melanie tiene un perfil sumamente competitivo para la plaza más exigente del mundo: Suiza. Al contar con ciudadanía europea, libre movilidad geográfica y un historial impecable mejorando métricas en la prestigiosa marca Barceló, su entrada a corporativos y hotelería de lujo en Zúrich se beneficia de un fuerte "product-market fit".</p>
+                </header>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-xl shadow-sm border border-stone-200 p-6">
+                        <h3 class="text-lg font-serif font-semibold mb-4 text-stone-800 border-b pb-2">Comparación de Competencias (Boutique & Corporate CH)</h3>
+                        <div class="text-sm text-stone-500 mb-4">Haz hover sobre los puntos para evaluar su nivel técnico y operativo frente al mercado más exclusivo de Europa.</div>
+                        <div class="chart-container"><canvas id="melanieSkillsChart"></canvas></div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm border border-stone-200 p-6 flex flex-col justify-center">
+                        <h3 class="text-lg font-serif font-semibold mb-6 text-stone-800 border-b pb-2">Ventajas Competitivas Clave de Melanie</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start"><span class="text-emerald-600 u-icon">🌟</span><div><strong class="block text-stone-800">Métricas de Reputación Demostrables</strong><span class="text-sm text-stone-600">Mejorar la reputación de Booking de 8.1 a 8.5 en el Barceló Occidental de Barcelona es un logro sobresaliente. En Suiza, donde la calidad de servicio se mide con precisión milimétrica, este KPI cuantificado en el CV abre puertas de inmediato.</span></div></li>
+                            <li class="flex items-start"><span class="text-amber-600 u-icon">🛠️</span><div><strong class="block text-stone-800">Dominio de Sistemas PMS Modernos</strong><span class="text-sm text-stone-600">Experta en Opera 5, Opera Cloud y SAP. No requiere entrenamiento técnico en sistemas transaccionales y de reservas complejos, lo que agiliza su incorporación en grandes cadenas de lujo o corporaciones turísticas.</span></div></li>
+                            <li class="flex items-start"><span class="text-stone-600 u-icon">💼</span><div><strong class="block text-stone-800">Doble Enfoque: Operaciones & Eventos</strong><span class="text-sm text-stone-600">Su experiencia dual como Event Manager y Guest Experience Manager le otorga una capacidad inusual para la organización logística impecable unida a la empatía del trato personalizado VIP.</span></div></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tab-languages" class="space-y-6 hidden">
+                <header class="mb-8">
+                    <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full uppercase tracking-wider">Ventaja Lingüística</span>
+                    <h2 class="text-3xl font-serif font-extrabold text-stone-900 mt-3 mb-2">La Llave de Oro: 4 Idiomas Europeos</h2>
+                    <p class="text-stone-600 leading-relaxed text-lg">El mercado suizo y europeo se sostiene bajo la comunicación multicultural. El abanico de idiomas de Melanie (Alemán, Italiano, Inglés y Español) es su mayor herramienta de negociación y desbloquea nichos corporativos de altísima remuneración.</p>
+                </header>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm space-y-4">
+                        <h3 class="text-xl font-serif font-bold text-stone-800 border-b pb-2">Distribución de Fluidez de Melanie</h3>
+                        <div class="space-y-4">
+                            <div><div class="flex justify-between text-sm mb-1"><span class="font-semibold text-stone-700">Español (Nativo)</span><span class="text-stone-500 font-mono">C2</span></div><div class="w-full bg-stone-100 h-2.5 rounded-full"><div class="bg-amber-600 h-2.5 rounded-full" style="width: 100%"></div></div></div>
+                            <div><div class="flex justify-between text-sm mb-1"><span class="font-semibold text-stone-700">Inglés (Excelente Fluidez Profesional)</span><span class="text-stone-500 font-mono">C1</span></div><div class="w-full bg-stone-100 h-2.5 rounded-full"><div class="bg-amber-600 h-2.5 rounded-full" style="width: 90%"></div></div></div>
+                            <div><div class="flex justify-between text-sm mb-1"><span class="font-semibold text-stone-700">Italiano (Excelente Fluidez Profesional)</span><span class="text-stone-500 font-mono">C1</span></div><div class="w-full bg-stone-100 h-2.5 rounded-full"><div class="bg-amber-600 h-2.5 rounded-full" style="width: 88%"></div></div></div>
+                            <div><div class="flex justify-between text-sm mb-1"><span class="font-semibold text-stone-700">Alemán (Nivel de Negociación Intermedio-Alto)</span><span class="text-stone-500 font-mono">B2</span></div><div class="w-full bg-stone-100 h-2.5 rounded-full"><div class="bg-amber-500 h-2.5 rounded-full" style="width: 70%"></div></div></div>
+                        </div>
+                    </div>
+                    <div class="bg-stone-900 text-stone-100 p-6 rounded-xl shadow-lg flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-serif font-bold text-amber-400 mb-3">¿Por qué es perfecto para Suiza?</h3>
+                            <p class="text-stone-300 text-sm leading-relaxed mb-4">Zúrich es un cantón de habla alemana. Contar con un Alemán B2 permite a Melanie integrarse con proveedores locales, entender las directivas administrativas suizas y tener conversaciones fluidas con su equipo de trabajo local.</p>
+                            <p class="text-stone-300 text-sm leading-relaxed mb-4">Sin embargo, al estar en Zúrich, muchas de las corporaciones y hoteles de lujo atienden a un público global. Su Inglés C1 es fundamental para negociar eventos internacionales, mientras que su Italiano C1 le otorga acceso preferente a vacantes que conecten con la región del Tesino y la vecina Italia del norte.</p>
+                        </div>
+                        <div class="border-t border-stone-800 pt-3 text-xs text-amber-300 font-mono">💡 Tip: En las entrevistas en Zúrich, recalca tu dominio del alemán estándar (Hochdeutsch), mostrándote abierta a habituar tu oído al dialecto local (Schwiizerdütsch).</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tab-cv-standard" class="space-y-6 hidden">
+                <header class="mb-8">
+                    <span class="text-xs font-semibold bg-blue-100 text-blue-800 px-3 py-1 rounded-full uppercase tracking-wider">Regulaciones Locales</span>
+                    <h2 class="text-3xl font-serif font-extrabold text-stone-900 mt-3 mb-2">Estructuración del CV Suizo (CH)</h2>
+                    <p class="text-stone-600 leading-relaxed text-lg">El proceso de contratación suizo se distingue por seguir pautas culturales y burocráticas estrictas. Mientras que el resto de Europa avanza hacia la eliminación de datos personales en el CV, en Suiza la tradición empresarial requiere transparencia total en ciertos aspectos clave.</p>
+                </header>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-bold text-stone-800 border-b pb-2">Peculiaridades del CV en Suiza</h3>
+                        <div class="space-y-3 text-stone-700 text-sm">
+                            <p class="border-l-4 border-amber-500 pl-3"><strong>La Fotografía Profesional es Esperada:</strong> A diferencia de UK o EE. UU., en Suiza se valora enormemente una foto corporativa, nítida, amigable y sumamente pulida (clave para roles de cara al cliente y hospitalidad VIP).</p>
+                            <p class="border-l-4 border-amber-500 pl-3"><strong>Visas y Permisos Claros:</strong> Melanie es ciudadana europea (EU Citizen). Esto debe figurar de manera explícita en la parte superior del CV: <em>"EU Citizen - Full Working Rights (CH/EU authorized)"</em>.</p>
+                            <p class="border-l-4 border-amber-500 pl-3"><strong>Referencias Visibles:</strong> Al final de su CV ya incluye contactos clave (Jesús Rivero y Lola Miranda). En Suiza, los reclutadores acostumbran a llamar o escribir a las referencias obligatoriamente.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm">
+                        <h3 class="text-xl font-serif font-bold mb-4 text-stone-800 border-b pb-2">Checklist para el CV de Melanie</h3>
+                        <p class="text-xs text-stone-500 mb-4">Monitorea y marca las tareas recomendadas para optimizar el CV actual:</p>
+                        <div id="swiss-checklist" class="space-y-3"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tab-channels" class="space-y-6 hidden">
+                <header class="mb-8">
+                    <span class="text-xs font-semibold bg-purple-100 text-purple-800 px-3 py-1 rounded-full uppercase tracking-wider">Rutas de Éxito</span>
+                    <h2 class="text-3xl font-serif font-extrabold text-stone-900 mt-3 mb-2">Canales de Élite en Suiza para Hospitalidad & Corporativos</h2>
+                    <p class="text-stone-600 leading-relaxed text-lg">Dado su nivel jerárquico y ubicación en Zúrich, Melanie no debe limitarse únicamente a hoteles tradicionales. Existen tres grandes mercados lucrativos donde su experiencia es sumamente codiciada.</p>
+                </header>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-5 rounded-xl border border-stone-200 shadow-sm flex flex-col justify-between">
+                        <div><span class="text-2xl">🏨</span><h4 class="font-bold text-stone-800 mt-2">Hotelería de Lujo & Relais</h4><p class="text-xs text-stone-600 mt-2 leading-relaxed">Zúrich alberga hoteles icónicos (The Dolder Grand, Baur au Lac, Park Hyatt). El estándar requerido es altísimo, pero pagan salarios acordes al costo de vida suizo.</p></div>
+                        <div class="mt-4 pt-3 border-t border-stone-100 text-amber-700 text-xs font-semibold">Portales: Hotelcareer.ch, Hosco, GastroSuisse</div>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl border border-stone-200 shadow-sm flex flex-col justify-between">
+                        <div><span class="text-2xl">💼</span><h4 class="font-bold text-stone-800 mt-2">Corporate Front of House / Private Clinics</h4><p class="text-xs text-stone-600 mt-2 leading-relaxed">Bancos privados suizos (UBS, Julius Bär) y clínicas médicas de súper lujo (Klinik Hirslanden) contratan profesionales de hospitalidad para gestionar sus áreas de recepción corporativa y eventos de clientes premium.</p></div>
+                        <div class="mt-4 pt-3 border-t border-stone-100 text-amber-700 text-xs font-semibold">Portales: Jobs.ch, Indeed.ch, LinkedIn</div>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl border border-stone-200 shadow-sm flex flex-col justify-between">
+                        <div><span class="text-2xl">✈️</span><h4 class="font-bold text-stone-800 mt-2">Aviación Privada (VIP Charter)</h4><p class="text-xs text-stone-600 mt-2 leading-relaxed">Empresas en los aeropuertos de Zúrich y Ginebra (como Jet Aviation o ExecuJet) buscan coordinadores de servicios en tierra y atención VIP con perfiles multilingües robustos.</p></div>
+                        <div class="mt-4 pt-3 border-t border-stone-100 text-amber-700 text-xs font-semibold">Portales: Aviation-jobs.ch, AviationCV</div>
+                    </div>
+                </div>
+                <div class="bg-amber-50 border border-amber-200 p-6 rounded-xl mt-6">
+                    <h3 class="font-serif font-bold text-amber-900 mb-2">Estrategia recomendada para Zúrich:</h3>
+                    <p class="text-sm text-stone-700 leading-relaxed">Dado que ya te encuentras en Suiza (📍 Zúrich), asiste presencialmente a eventos de networking locales del sector turismo o busca entablar contacto directo vía LinkedIn con "Head of Guest Experience", "Rooms Division Managers" o "Operations Directors" en los hoteles y clínicas de la región. El mercado helvético premia de manera contundente la iniciativa local, tu residencia en el país y tu pasaporte de la Unión Europea.</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('main section').forEach(sec => { sec.classList.add('hidden'); sec.classList.remove('block'); });
+            const activeSec = document.getElementById('tab-' + tabId);
+            activeSec.classList.remove('hidden');
+            activeSec.classList.add('block');
+            document.querySelectorAll('.nav-item').forEach(btn => { btn.classList.remove('tab-active', 'text-amber-900'); btn.classList.add('text-stone-600'); });
+            const activeBtn = document.getElementById('nav-' + tabId);
+            if(activeBtn) { activeBtn.classList.add('tab-active', 'text-amber-900'); activeBtn.classList.remove('text-stone-600'); }
+            const mobileSelect = document.getElementById('mobile-nav');
+            if (mobileSelect && mobileSelect.value !== tabId) { mobileSelect.value = tabId; }
+            if(tabId === 'analysis' && window.mySkillsChart) { window.mySkillsChart.resize(); }
+        }
+
+        const checklistItems = [
+            "Asegurarse de que el CV destaque tu residencia actual en Suiza (Zúrich).",
+            "Indicar explícitamente la nacionalidad: 'Ciudadana Europea (Arbeitserlaubnis CH/EU)'.",
+            "Incluir una fotografía corporativa impecable, de alta resolución y con un semblante cálido.",
+            "Mantener el CV en inglés, pero adjuntar versiones en alemán si la postulación es en hoteles tradicionales.",
+            "Cuantificar logros operativos en la primera línea de cada rol (por ejemplo, Google Rating 4.0 → 4.3).",
+            "Verificar que las referencias cuenten con sus números telefónicos de contacto activos."
+        ];
+
+        function initChecklist() {
+            const container = document.getElementById('swiss-checklist');
+            checklistItems.forEach((text, index) => {
+                const id = `check-${index}`;
+                const div = document.createElement('div');
+                div.className = 'flex items-start cursor-pointer hover:bg-stone-50 p-2 rounded transition-colors';
+                div.onclick = function() { const checkbox = document.getElementById(id); checkbox.checked = !checkbox.checked; toggleStrike(id, `text-${id}`); };
+                div.innerHTML = `<input type="checkbox" id="${id}" class="mt-1 mr-3 h-4 w-4 text-amber-700 rounded border-stone-300 focus:ring-amber-500" onclick="event.stopPropagation(); toggleStrike('${id}', 'text-${id}')"><label id="text-${id}" class="text-sm text-stone-700 cursor-pointer select-none transition-all">${text}</label>`;
+                container.appendChild(div);
+            });
+        }
+
+        function toggleStrike(checkId, textId) {
+            const isChecked = document.getElementById(checkId).checked;
+            const textElement = document.getElementById(textId);
+            if(isChecked) { textElement.classList.add('line-through', 'text-stone-400'); textElement.classList.remove('text-stone-700'); }
+            else { textElement.classList.remove('line-through', 'text-stone-400'); textElement.classList.add('text-stone-700'); }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initChecklist();
+            const ctx = document.getElementById('melanieSkillsChart').getContext('2d');
+            const data = {
+                labels: ['Guest Recovery / Quejas', 'PMS Cloud (Opera/SAP)', 'Coordinación de Eventos', 'Comunicación Multilingüe', 'Control de KPIs & Reputación', 'Liderazgo de Equipos'],
+                datasets: [{
+                    label: 'Perfil de Melanie Lell',
+                    data: [95, 85, 90, 92, 90, 80],
+                    fill: true,
+                    backgroundColor: 'rgba(180, 83, 9, 0.15)',
+                    borderColor: 'rgb(180, 83, 9)',
+                    pointBackgroundColor: 'rgb(180, 83, 9)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(180, 83, 9)'
+                }, {
+                    label: 'Estándar de Mercado Suizo',
+                    data: [85, 75, 80, 85, 80, 85],
+                    fill: true,
+                    backgroundColor: 'rgba(68, 64, 60, 0.1)',
+                    borderColor: 'rgb(68, 64, 60)',
+                    pointBackgroundColor: 'rgb(68, 64, 60)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(68, 64, 60)'
+                }]
+            };
+            const config = {
+                type: 'radar',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(120, 113, 108, 0.1)' },
+                            grid: { color: 'rgba(120, 113, 108, 0.1)' },
+                            pointLabels: { font: { size: 10, family: "system-ui, sans-serif" }, color: '#57534e', callback: function(value) { if(value.length > 15 && value.includes(' ')) { return value.split(' '); } return value; } },
+                            ticks: { display: false, min: 0, max: 100 }
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8, font: { size: 11 } } },
+                        tooltip: {
+                            backgroundColor: 'rgba(28, 25, 23, 0.95)',
+                            padding: 10,
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) { label += ': '; }
+                                    if (context.parsed.r !== null) { label += context.parsed.r + '%'; }
+                                    if(context.datasetIndex === 0 && context.dataIndex === 4) { return [label, '¡Fuerte diferencial! Excelentes', 'resultados en Google/Booking.']; }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+            window.mySkillsChart = new Chart(ctx, config);
+        });
+    </script>
+</body>
+</html>
