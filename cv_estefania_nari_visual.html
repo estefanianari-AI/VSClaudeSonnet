@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estefanía Nari · CV</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a2744;
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --tag-bg: #f1f5f9;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: #f0f4f8;
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    /* Language toggle */
+    .lang-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 100;
+      display: flex;
+      background: white;
+      border: 2px solid var(--navy);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    .lang-btn {
+      padding: 7px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: var(--navy);
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--navy);
+      color: white;
+    }
+
+    /* CV container */
+    .cv {
+      max-width: 820px;
+      margin: 28px auto;
+      background: white;
+      box-shadow: 0 4px 28px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    @media print {
+      body { background: white; font-size: 12px; }
+      .cv { margin: 0; box-shadow: none; border-radius: 0; max-width: 100%; }
+      .lang-toggle { display: none; }
+      .section { margin-bottom: 22px; }
+    }
+
+    /* Header */
+    .header {
+      background: var(--navy);
+      padding: 40px 48px 36px;
+      color: white;
+    }
+
+    .header-name {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .header-tagline {
+      font-size: 13.5px;
+      color: #93c5fd;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      margin-bottom: 22px;
+    }
+
+    .header-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 13px;
+      color: #cbd5e1;
+    }
+
+    .header-contacts a {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Body */
+    .body {
+      padding: 36px 48px 52px;
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent-light);
+      padding-bottom: 7px;
+      margin-bottom: 20px;
+    }
+
+    /* Profile */
+    .profile-text {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    /* Experience */
+    .exp-item {
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exp-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .exp-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .exp-period {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .exp-company-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .exp-company {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .exp-location {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .exp-bullets {
+      margin-top: 6px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .exp-bullets li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 5px;
+      color: #374151;
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+
+    .exp-bullets li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 10px;
+      top: 4px;
+    }
+
+    /* Tags */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: #334155;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 4px;
+    }
+
+    .tag.ai {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    /* Projects */
+    .project-item {
+      margin-bottom: 14px;
+      padding: 16px;
+      background: var(--tag-bg);
+      border-radius: 8px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .project-title {
+      font-weight: 700;
+      font-size: 13.5px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: #4b5563;
+      line-height: 1.65;
+    }
+
+    /* Skills grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .skill-group-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    /* Education */
+    .edu-item {
+      margin-bottom: 11px;
+    }
+
+    .edu-institution {
+      font-weight: 700;
+      font-size: 13.5px;
+    }
+
+    .edu-degree {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Languages */
+    .lang-items {
+      display: flex;
+      gap: 32px;
+    }
+
+    .lang-item {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .lang-name {
+      font-weight: 700;
+      font-size: 13.5px;
+    }
+
+    .lang-level {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Language content toggle */
+    .en { display: block; }
+    .es { display: none; }
+    body.lang-es .en { display: none; }
+    body.lang-es .es { display: block; }
+    span.en { display: inline; }
+    span.es { display: none; }
+    body.lang-es span.en { display: none; }
+    body.lang-es span.es { display: inline; }
+    li.en { display: list-item; }
+    li.es { display: none; }
+    body.lang-es li.en { display: none; }
+    body.lang-es li.es { display: list-item; }
+  </style>
+</head>
+<body>
+
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('en')" id="btn-en">ENG</button>
+  <button class="lang-btn" onclick="setLang('es')" id="btn-es">ESP</button>
+</div>
+
+<div class="cv">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-name">Estefanía Nari</div>
+    <div class="header-tagline">Senior BI &amp; Data Analyst &nbsp;·&nbsp; GenAI Adoption &nbsp;·&nbsp; Business Analytics</div>
+    <div class="header-contacts">
+      <span class="contact-item">📍 Barcelona, <span class="en">Spain</span><span class="es">España</span></span>
+      <span class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="11" viewBox="0 0 24 18" style="vertical-align:middle;margin-right:4px"><path d="M0 0v18h24V0H0zm21.6 2L12 9.6 2.4 2h19.2zM2 16V4.8l10 7.6 10-7.6V16H2z" fill="#EA4335"/></svg>nariestefania5@gmail.com</span>
+      <span class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#25D366" style="vertical-align:middle;margin-right:4px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>+34 665 823399</span>
+      <span class="contact-item">🔗 <a href="https://www.linkedin.com/in/estefinari/" target="_blank">linkedin.com/in/estefinari</a></span>
+      <span class="contact-item">🪪 <span class="en">Spain NIE · EU Work Authorized</span><span class="es">NIE España · Autorización de Trabajo UE</span></span>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- PROFILE -->
+    <div class="section">
+      <div class="section-title"><span class="en">Profile</span><span class="es">Perfil</span></div>
+      <p class="profile-text en">
+        Business Management graduate specializing in Business Analytics with 10+ years of experience in data analysis, business intelligence, and project management. Specialized in turning data into strategic decisions through dashboards, KPIs, and predictive models.<br><br>
+        Currently at one of Latin America's leading companies in GenAI development and integration, driving AI adoption across teams through applied training programs, RAG system development, and workflow automation with agentic AI tools.
+      </p>
+      <p class="profile-text es">
+        Licenciada en Dirección de Negocios con especialización en Business Analytics y más de 10 años de experiencia en análisis de datos, inteligencia de negocios y gestión de proyectos. Especializada en transformar datos en decisiones estratégicas a través de dashboards, KPIs y modelos predictivos.<br><br>
+        Actualmente en una de las empresas líderes en desarrollo e integración de GenAI en Latinoamérica, impulsando la adopción de IA en equipos a través de programas de formación aplicada, desarrollo de sistemas RAG y automatización de flujos de trabajo con herramientas de IA agéntica.
+      </p>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section">
+      <div class="section-title"><span class="en">Work Experience</span><span class="es">Experiencia Laboral</span></div>
+
+      <!-- MercadoLibre -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Senior BI Analyst · Process Development · Reverse Logistics</div>
+          <div class="exp-period">Sep 2025 – <span class="en">Present</span><span class="es">Actualidad</span></div>
+        </div>
+        <div class="exp-company-row">
+          <span class="exp-company">Mercado Libre</span>
+          <span class="exp-location">Remote · Barcelona, <span class="en">Spain</span><span class="es">España</span></span>
+        </div>
+        <ul class="exp-bullets">
+          <li class="en">AI reference and GenAI lead for the Reverse Logistics PD team at one of LatAm's largest tech companies</li>
+          <li class="en">Created and run the AI Knowledge Share program: 16 sessions across Q1–Q4 2026 covering LLMs, prompting, Deep Research, RAG development, AI Assistants, MCPs, and automation flows</li>
+          <li class="en">Develop RAG-based knowledge systems and AI-powered workflows using Claude Code, MCPs (BigQuery, Looker, VerdiFlows), and Verdi Flows automation</li>
+          <li class="en">Analyze operational and commercial performance metrics using BigQuery, Looker, and agentic AI tools; automate data pipelines with Python</li>
+          <li class="es">Referente de GenAI del equipo de PD de Logística Inversa en una de las mayores empresas tech de Latinoamérica</li>
+          <li class="es">Creé y lidero el programa AI Knowledge Share: 16 sesiones a lo largo de 2026 sobre LLMs, prompting, Deep Research, desarrollo de RAGs, Asistentes de IA, MCPs y flujos de automatización</li>
+          <li class="es">Desarrollo sistemas de conocimiento basados en RAG y flujos de trabajo con IA mediante Claude Code, MCPs (BigQuery, Looker, VerdiFlows) y automatizaciones con Verdi Flows</li>
+          <li class="es">Analizo métricas de performance operativa y comercial usando BigQuery, Looker y herramientas de IA agéntica; automatizo pipelines de datos con Python</li>
+        </ul>
+        <div class="tags">
+          <span class="tag ai">Claude Code</span>
+          <span class="tag ai">VS Code</span>
+          <span class="tag ai">RAG Development</span>
+          <span class="tag ai">MCPs</span>
+          <span class="tag ai">GenAI Adoption</span>
+          <span class="tag ai">Prompt Engineering</span>
+          <span class="tag">BigQuery</span>
+          <span class="tag">Looker</span>
+          <span class="tag">Verdi Flows</span>
+        </div>
+      </div>
+
+      <!-- VcP -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">
+            <span class="en">Business &amp; Data Analyst · Operations &amp; Commercial Analytics</span>
+            <span class="es">Business &amp; Data Analyst · Gestión Operativa y Análisis Comercial</span>
+          </div>
+          <div class="exp-period">
+            <span class="en">Jan 2024 – Oct 2025</span>
+            <span class="es">Ene 2024 – Oct 2025</span>
+          </div>
+        </div>
+        <div class="exp-company-row">
+          <span class="exp-company">VcP</span>
+          <span class="exp-location">Remote · Freelance</span>
+        </div>
+        <ul class="exp-bullets">
+          <li class="en">Designed and implemented operational improvements focused on customer experience, loyalty, and service expansion</li>
+          <li class="en">Built analytics dashboards and KPI tracking frameworks to support business decisions</li>
+          <li class="es">Diseñé e implementé mejoras operativas con foco en experiencia del cliente, fidelización y expansión de servicios</li>
+          <li class="es">Desarrollé dashboards de análisis y marcos de KPIs para apoyar la toma de decisiones del negocio</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Google Analytics</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">Looker Studio</span>
+          <span class="tag">Canva</span>
+        </div>
+      </div>
+
+      <!-- Vitus Sancor Salud -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">
+            <span class="en">Business Development Lead</span>
+            <span class="es">Líder Desarrollo de Negocios</span>
+          </div>
+          <div class="exp-period">
+            <span class="en">Jul 2022 – Jan 2024</span>
+            <span class="es">Jul 2022 – Ene 2024</span>
+          </div>
+        </div>
+        <div class="exp-company-row">
+          <span class="exp-company">Vitus Sancor Salud</span>
+          <span class="exp-location">Córdoba, Argentina · <span class="en">Hybrid</span><span class="es">Híbrido</span></span>
+        </div>
+        <ul class="exp-bullets">
+          <li class="en">Designed commercial strategies based on market analysis and competitive benchmarking</li>
+          <li class="en">Managed budgets, commercial objectives, and continuous process improvement in high-demand environments</li>
+          <li class="en">Led implementation of health tech innovations: telemedicine platforms and mobile apps to optimize customer experience</li>
+          <li class="es">Diseñé estrategias comerciales basadas en análisis de mercado y benchmarking competitivo</li>
+          <li class="es">Supervisé presupuestos, objetivos comerciales y mejora continua de procesos en entornos de alta demanda</li>
+          <li class="es">Lideré la incorporación de soluciones tecnológicas en salud: plataformas de telemedicina y apps móviles para optimizar la experiencia del cliente</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Power BI</span>
+          <span class="tag">Strategic Planning</span>
+          <span class="tag">Project Management</span>
+          <span class="tag">Health Tech</span>
+        </div>
+      </div>
+
+      <!-- Head of Business Analytics -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">
+            <span class="en">Head of Business Analytics</span>
+            <span class="es">Jefa de Business Analytics</span>
+          </div>
+          <div class="exp-period">
+            <span class="en">Oct 2020 – Jul 2022</span>
+            <span class="es">Oct 2020 – Jul 2022</span>
+          </div>
+        </div>
+        <div class="exp-company-row">
+          <span class="exp-company">Sancor Salud</span>
+          <span class="exp-location">Santa Fe, Argentina · Remote</span>
+        </div>
+        <ul class="exp-bullets">
+          <li class="en">Led development of executive dashboards and reports for senior leadership strategic decisions</li>
+          <li class="en">Implemented predictive models and defined key KPIs for commercial and operational performance monitoring</li>
+          <li class="en">Coordinated high-impact analytical projects on process efficiency, product profitability, and population health management</li>
+          <li class="es">Lideré el desarrollo de dashboards y reportes ejecutivos orientados a la toma de decisiones de la alta dirección</li>
+          <li class="es">Implementé modelos predictivos y definí KPIs clave para el seguimiento de performance comercial y operativa</li>
+          <li class="es">Coordiné proyectos analíticos de alto impacto vinculados a eficiencia de procesos, rentabilidad de productos y gestión de salud poblacional</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">SQL</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">MicroStrategy</span>
+          <span class="tag">Predictive Analytics</span>
+        </div>
+      </div>
+
+      <!-- BI Analyst -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">
+            <span class="en">BI Analyst</span>
+            <span class="es">Analista BI</span>
+          </div>
+          <div class="exp-period">
+            <span class="en">Apr 2018 – Oct 2020</span>
+            <span class="es">Abr 2018 – Oct 2020</span>
+          </div>
+        </div>
+        <div class="exp-company-row">
+          <span class="exp-company">Sancor Salud</span>
+          <span class="exp-location">Santa Fe, Argentina · Remote</span>
+        </div>
+        <ul class="exp-bullets">
+          <li class="en">Analyzed large data volumes for strategic areas: health, operations, and customer service</li>
+          <li class="en">Automated BI reports and dashboards, reducing turnaround time and improving data quality</li>
+          <li class="en">Generated strategic insights for tactical and operational decision-making</li>
+          <li class="es">Analicé grandes volúmenes de datos para áreas estratégicas: salud, operaciones y atención al cliente</li>
+          <li class="es">Automaticé reportes e informes con herramientas BI, reduciendo tiempos y mejorando la calidad de la información</li>
+          <li class="es">Generé insights estratégicos para la toma de decisiones tácticas y operativas</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">SQL</span>
+          <span class="tag">Looker</span>
+          <span class="tag">Data Analysis</span>
+        </div>
+      </div>
+
+      <!-- Administrative Analyst -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">
+            <span class="en">Administrative &amp; Accounting Analyst</span>
+            <span class="es">Analista Administrativo Contable</span>
+          </div>
+          <div class="exp-period">
+            <span class="en">Aug 2016 – Apr 2018</span>
+            <span class="es">Ago 2016 – Abr 2018</span>
+          </div>
+        </div>
+        <div class="exp-company-row">
+          <span class="exp-company">Sancor Salud</span>
+          <span class="exp-location">Sunchales, Santa Fe, Argentina</span>
+        </div>
+        <p class="en" style="font-size:13px;color:#4b5563;margin-top:6px;">Administrative and accounting management in corporate environment. First role within the Sancor Salud group.</p>
+        <p class="es" style="font-size:13px;color:#4b5563;margin-top:6px;">Gestión administrativa y contable en entorno corporativo. Primer rol dentro del grupo Sancor Salud.</p>
+      </div>
+
+    </div>
+
+    <!-- FEATURED PROJECTS -->
+    <div class="section">
+      <div class="section-title"><span class="en">Featured Projects</span><span class="es">Proyectos Destacados</span></div>
+
+      <div class="project-item">
+        <div class="project-title en">AI Knowledge Share Program · Mercado Libre · 2026</div>
+        <div class="project-title es">Programa AI Knowledge Share · Mercado Libre · 2026</div>
+        <p class="project-desc en">Created and lead the GenAI training program for the Reverse Logistics PD team. 16 sessions covering LLMs, prompting, Deep Research, RAG development, AI Assistants, MCPs, and automation flows. Includes hands-on workshops with Claude Code, BigQuery MCP, Looker MCP, and Verdi Flows.</p>
+        <p class="project-desc es">Creé y lidero el programa de formación en GenAI para el equipo de PD de Logística Inversa. 16 sesiones sobre LLMs, prompting, Deep Research, desarrollo de RAGs, Asistentes de IA, MCPs y flujos de automatización. Talleres prácticos de Claude Code, MCP BigQuery, MCP Looker y Verdi Flows.</p>
+      </div>
+
+      <div class="project-item">
+        <div class="project-title en">Telemedicine Platform · Sancor Salud Vitus · 2019–2023</div>
+        <div class="project-title es">Plataforma de Telemedicina · Sancor Salud Vitus · 2019–2023</div>
+        <p class="project-desc en">Designed and implemented a remote medical care platform. Significant improvements in operational efficiency and quality of patient care.</p>
+        <p class="project-desc es">Diseñé e implementé una plataforma de atención médica remota. Mejora significativa en eficiencia operativa y calidad de atención al paciente.</p>
+      </div>
+
+      <div class="project-item">
+        <div class="project-title en">AI in Health · Sancor Salud · 2020</div>
+        <div class="project-title es">IA en Salud · Sancor Salud · 2020</div>
+        <p class="project-desc en">Machine learning model to predict chronic diseases in diabetic patients. High predictive accuracy, improving treatment protocols and reducing costs.</p>
+        <p class="project-desc es">Modelo de machine learning para predecir enfermedades crónicas en pacientes con diabetes. Alta precisión predictiva que mejoró protocolos de tratamiento y redujo costos.</p>
+      </div>
+
+    </div>
+
+    <!-- SKILLS & TOOLS -->
+    <div class="section">
+      <div class="section-title"><span class="en">Tools &amp; Skills</span><span class="es">Herramientas y Habilidades</span></div>
+      <div class="skills-grid">
+        <div>
+          <div class="skill-group-title">GenAI &amp; AI</div>
+          <div class="tags">
+            <span class="tag ai">Claude Code</span>
+            <span class="tag ai">RAG Development</span>
+            <span class="tag ai">MCPs</span>
+            <span class="tag ai">Prompt Engineering</span>
+            <span class="tag ai">Gemini / ChatGPT</span>
+            <span class="tag ai">NotebookLM</span>
+            <span class="tag ai">Gemini Gems</span>
+            <span class="tag ai">Deep Research</span>
+            <span class="tag ai">Verdi Flows</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title">BI &amp; Visualization</div>
+          <div class="tags">
+            <span class="tag">Power BI</span>
+            <span class="tag">Looker Studio</span>
+            <span class="tag">MicroStrategy</span>
+            <span class="tag">Google Analytics</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title"><span class="en">Analysis &amp; Automation</span><span class="es">Análisis y Automatización</span></div>
+          <div class="tags">
+            <span class="tag">SQL</span>
+            <span class="tag">Python</span>
+            <span class="tag">BigQuery</span>
+            <span class="tag">Excel</span>
+            <span class="tag">Google Sheets</span>
+            <span class="tag">Power Query</span>
+            <span class="tag">DAX</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title"><span class="en">Management</span><span class="es">Gestión</span></div>
+          <div class="tags">
+            <span class="tag">Agile / Scrum</span>
+            <span class="tag">Kanban</span>
+            <span class="tag">SAP</span>
+            <span class="tag">CRM</span>
+            <span class="tag">Trello</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION & COURSES -->
+    <div class="section">
+      <div class="section-title"><span class="en">Education &amp; Courses</span><span class="es">Educación y Cursos</span></div>
+
+      <div class="edu-item">
+        <div class="edu-institution">Instituto Tecnológico de Buenos Aires</div>
+        <div class="edu-degree"><span class="en">Diploma in Big Data, Mathematics &amp; Statistics</span><span class="es">Diplomatura en Big Data, Matemáticas y Estadísticas</span></div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-institution">Universidad Nacional de Rafaela</div>
+        <div class="edu-degree"><span class="en">Diploma in Creativity &amp; Innovation</span><span class="es">Diplomatura en Creatividad e Innovación</span></div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-institution">Universidad de Ciencias Empresariales y Sociales</div>
+        <div class="edu-degree"><span class="en">Bachelor's in Business Management</span><span class="es">Licenciatura en Dirección de Negocios</span></div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-institution">Asociación Dirigente de Empresas – ISCC</div>
+        <div class="edu-degree"><span class="en">Technician in Business Management</span><span class="es">Técnico en Gestión Empresarial</span></div>
+      </div>
+
+      <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--border);">
+        <div class="edu-item">
+          <div class="edu-institution">POK – Capability Building</div>
+          <div class="edu-degree"><span class="en">Project Based Learning with AI · 2025</span><span class="es">Project Based Learning with IA · 2025</span></div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-institution">Coderhouse</div>
+          <div class="edu-degree">Advanced Excel · Google Sheets · Power BI · Looker · SQL</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-institution">CEMIC – IECS</div>
+          <div class="edu-degree"><span class="en">Health, Innovation &amp; Performance Indicators</span><span class="es">Salud, Innovación y Análisis de Indicadores</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LANGUAGES -->
+    <div class="section">
+      <div class="section-title"><span class="en">Languages</span><span class="es">Idiomas</span></div>
+      <div class="lang-items">
+        <div class="lang-item">
+          <span class="lang-name"><span class="en">Spanish</span><span class="es">Español</span></span>
+          <span class="lang-level"><span class="en">Native</span><span class="es">Nativo</span></span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name"><span class="en">English</span><span class="es">Inglés</span></span>
+          <span class="lang-level">B2 (CEFR)</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function setLang(lang) {
+    document.body.classList.toggle('lang-es', lang === 'es');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  }
+</script>
+
+</body>
+</html>
